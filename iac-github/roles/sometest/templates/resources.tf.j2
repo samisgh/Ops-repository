@@ -15,12 +15,12 @@ lifecycle {
 }
 
 resource "github_branch_default" "{{github_dic['github_branch_default']}}"{
-  repository = github_repository.test.name
+  repository = github_repository.name
   branch     = "main"
 }
 
 resource "github_branch_protection" "{{github_dic['github_branch_protection']}}"  {
-  repository_id = github_repository.test.node_id
+  repository_id = github_repository.node_id
  for_each = {
     main = {
       pattern          = "main",
