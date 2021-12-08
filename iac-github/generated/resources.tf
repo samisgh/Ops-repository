@@ -1,6 +1,6 @@
-resource "github_repository" "var=repodata" {
-  name                   = "var=repodata"
-  description            = "var=repodata"
+resource "github_repository" "test" {
+  name                   = "test1"
+  description            = "A description of the repository"
   visibility             = "public"
   has_issues             = false
   has_projects           = false
@@ -14,12 +14,12 @@ lifecycle {
   }
 }
 
-resource "github_branch_default" "var=repodata"{
+resource "github_branch_default" "main"{
   repository = github_repository.test.name
   branch     = "main"
 }
 
-resource "github_branch_protection" "var=repodata" {
+resource "github_branch_protection" "test_id" {
   repository_id = github_repository.test.node_id
  for_each = {
     main = {
