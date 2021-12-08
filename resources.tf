@@ -1,4 +1,4 @@
-resource "github_repository" "var=my_dic" {
+resource "github_repository" "var="{'github_repository_name': 'test', 'github_branch_default': 'main', 'github_branch_protection': 'test_id', 'github_name': 'test1', 'github_description': 'A description of the repository'}" {
   name                   = "var=my_dic"
   description            = "var=my_dic"
   visibility             = "public"
