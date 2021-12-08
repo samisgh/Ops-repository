@@ -1,0 +1,16 @@
+---     
+- name: Template a file to main.tf
+  ansible.builtin.template:
+    src: "main.tf.j2"
+    dest: "/mnt/c/Users/admin/iac/iac-github/generated/main.tf"
+    mode: '0644'
+    owner: "proadmin"
+    group: "proadmin"
+
+- name: Template a file to resources.tf
+  ansible.builtin.template:
+    src: "resources.tf.j2"
+    dest: "/mnt/c/Users/admin/iac/iac-github/generated/resources.tf" 
+    mode: '0644'
+    owner: "proadmin"
+    group: "proadmin"
