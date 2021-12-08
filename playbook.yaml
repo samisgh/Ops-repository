@@ -1,0 +1,13 @@
+---
+- hosts: all
+  connection: local
+
+  vars: 
+    
+    github_version: "v4.18.2"
+    github_dic: {
+        "github_repository_name": "test", 
+                  }
+
+  roles:
+    - { role: "sometest"}       
