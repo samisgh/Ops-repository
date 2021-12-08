@@ -11,6 +11,14 @@
         "github_name": 'test1',
         "github_description": 'A description of the repository'
     }
+    OR
+        set_fact:
+        repodata: "{{ repodata | default({}) | combine ({ item.key : item.value }) }}"
+    with_items:
+        - { 'key': 'github_repository_name' , 'value':  "test"}
+        - { 'key': "github_branch_default" , 'value': "main"}
+        - { 'key': "github_branch_protection" , 'value': "test_id"}
+        - { 'key': "github_name" , 'value': 'test1'
 
   roles:
     - { role: "sometest"}       
