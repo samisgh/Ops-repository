@@ -1,1 +1,37 @@
+---     
+- name: Template a file to main.tf
+  ansible.builtin.template:
+    src: "main.tf.j2"
+    dest: "/mnt/c/Users/admin/iac/iac-github/generated/main.tf"
+    mode: '0644'
+    owner: "proadmin"
+    group: "proadmin"
+    
 
+- name: Template a file to resources.tf
+  ansible.builtin.template:
+    src: "resources.tf.j2"
+    dest: "/mnt/c/Users/admin/iac/iac-github/generated/resources_{{REPONAME}}.tf"
+    mode: '0644'
+    owner: "proadmin"
+    group: "proadmin"
+  with_items:
+    - { github_repository_name: "first_OPs_repo" }
+    - { github_branch_default: "main1" }
+    - { github_branch_protection: "first_OPs_repo_id" }
+    - { github_name: "first_OPs_repository" }
+    - { github_description: "A description of the repository" }
+    
+  -------------------------------------------------------------
+  - name: Template a file to resources.tf
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest:  "{{ item.dest }}"
+    mode: '0644'
+    owner: "proadmin"
+    group: "proadmin"
+  with_items:
+      - {src: 'resources.tf.j2',dest: '/mnt/c/Users/admin/iac/iac-github/generated/resources.tf'}
+      - {src: 'secondresources.tf.j2',dest: '/mnt/c/Users/admin/iac/iac-github/generated/secondresources.tf'}
+  loop:
+      "{{ github_list }}"
