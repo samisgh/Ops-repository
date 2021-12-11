@@ -1,5 +1,5 @@
-resource "github_repository" "test" {
-  name                   = "test1"
+resource "github_repository" "first_OPs_repo" {
+  name                   = "first_OPs_repository"
   description            = "A description of the repository"
   visibility             = "public"
   has_issues             = false
@@ -14,13 +14,13 @@ lifecycle {
   }
 }
 
-resource "github_branch_default" "main"{
-  repository = github_repository.test.name
+resource "github_branch_default" "main1"{
+  repository = github_repository.first_OPs_repo.name
   branch     = "main"
 }
 
-resource "github_branch_protection" "test_id" {
-  repository_id = github_repository.test.node_id
+resource "github_branch_protection" "first_OPs_repo_id" {
+  repository_id = github_repository.first_OPs_repo.node_id
  for_each = {
     main = {
       pattern          = "main",
