@@ -5,3 +5,4 @@
     mode: '0644'
     owner: "proadmin"
     group: "proadmin"
+    loop: "{{ github_dic|default([]) }}"
