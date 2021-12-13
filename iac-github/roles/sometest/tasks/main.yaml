@@ -10,3 +10,5 @@
 - include_tasks: resources.yaml
   loop:
      "{{ github_list }}" 
+  loop_control:
+    loop_var: outer_item
