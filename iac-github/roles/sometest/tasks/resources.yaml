@@ -1,22 +1,8 @@
 - name: Template a file to resources.tf
   ansible.builtin.template:
     src: "resources.tf.j2"
-    dest: "/mnt/c/Users/admin/iac/iac-github/generated/resources_{{github_list['github_repository_name']}}.tf"
+    dest: "/mnt/c/Users/admin/iac/iac-github/generated/resources_{{outer_item['github_repository_name']}}.tf"
     mode: '0644'
     owner: "proadmin"
     group: "proadmin"
-  loop:
-    - github_repository_name: "first_OPs_repo"
-      # github_branch_default: "main1"
-      # github_branch_protection: "first_OPs_repo_id"
-      # github_name: "first_OPs_repository"
-      # github_description: "A description of the repository"
-    - github_repository_name: "second_OPs_repo" 
-      # github_branch_default: "main2"
-      # github_branch_protection: "second_OPs_repo_id"
-      # github_name: "second_OPs_repository"
-      # github_description: "second description of the repository"
-      # - { src: 'admin-role.yaml.j2', dest: '/etc/rancher/k3s/service-accounts/admin-role.yaml' }
-      # - { src: 'admin-user.yaml.j2', dest: '/etc/rancher/k3s/service-accounts/admin-user.yaml' }
-  loop_control:
-   loop_var: inner_item
+
