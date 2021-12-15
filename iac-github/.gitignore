@@ -1,2 +1,3 @@
-/generated
+main.tf
+*.tf
 
