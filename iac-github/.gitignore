@@ -1,0 +1,2 @@
+/generated/main.tf
+/generated/resources_{{outer_item['github_repository_name']}}.tf
