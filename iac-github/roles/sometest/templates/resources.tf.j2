@@ -1,6 +1,6 @@
-resource "github_repository" "{{ github_dic['github_repository_name'] }}" {
-  name                   = "{{github_dic['github_name']}}"
-  description            = "{{github_dic['github_description']}}"
+resource "github_repository" "{{ outer_item['github_repository_name'] }}" {
+  name                   = "{{outer_item['github_repository_name']}}"
+  description            = "{{outer_item['github_repository_name']}}"
   visibility             = "public"
   has_issues             = false
   has_projects           = false
@@ -14,13 +14,13 @@ lifecycle {
   }
 }
 
-resource "github_branch_default" "{{github_dic['github_branch_default']}}"{
-  repository = github_repository.{{ github_dic['github_repository_name'] }}.name
+resource "github_branch_default" "{{outer_item['github_repository_name']}}"{
+  repository = github_repository.{{ outer_item['github_repository_name'] }}.name
   branch     = "main"
 }
 
-resource "github_branch_protection" "{{github_dic['github_branch_protection']}}"  {
-  repository_id = github_repository.{{ github_dic['github_repository_name'] }}.node_id
+resource "github_branch_protection" "{{outer_item['github_repository_name']}}"  {
+  repository_id = github_repository.{{ outer_item['github_repository_name'] }}.node_id
  for_each = {
     main = {
       pattern          = "main",
