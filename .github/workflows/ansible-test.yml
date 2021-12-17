@@ -15,8 +15,6 @@ jobs:
       with: 
         playbook: playbook.yml
         inventory: localhost
-    - name: Change to Ansible directory and clone Ansible Repo
-      run: cd ansible && git clone git@github.com:samisgh/Ops-repository.git
     - name: Run ansible
       run: ansible-playbook -i localhost, -c local playbook.yaml 
       working-directory: ./Ops-repository
