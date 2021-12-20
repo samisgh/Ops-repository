@@ -2,7 +2,7 @@
 - hosts: all
   connection: local
 
-  vars: 
+  vars:
     github_version: "v4.18.2"
     github_list:
       - github_repository_name: "first_OPs_repo"
@@ -15,7 +15,6 @@
         github_branch_protection: "second_OPs_repo_id"
         github_name: "second_OPs_repository"
         github_description: "second description of the repository"
-    
 
   roles:
-    - { role: "sometest"}         
+    - { role: "sometest" }         
