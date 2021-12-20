@@ -19,9 +19,8 @@ jobs:
         uses: ansible/ansible-lint-action@master
         with:
           targets: |
-            iac-github/*.yml
-            iac-github/*/*.yml
-            playbooks/*.yml
+            Ops-repository/iac-github/playbook.yaml.yml
+
 
 # jobs:
 
