@@ -1,4 +1,4 @@
----     
+--- 
 - name: Template a file to main.tf
   ansible.builtin.template:
     src: "main.tf.j2"
@@ -6,9 +6,8 @@
     mode: '0644'
     owner: "proadmin"
     group: "proadmin"
-    
 - include_tasks: resources.yaml
   loop:
-     "{{ github_list }}" 
+     "{{ github_list }}"
   loop_control:
     loop_var: outer_item
