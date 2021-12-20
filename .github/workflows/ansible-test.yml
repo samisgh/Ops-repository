@@ -5,17 +5,22 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 jobs:
-  build:
+  linters:
+    name: Run Linters
     runs-on: ubuntu-latest
-    name: ansible-lint
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - run: pip install ansible ansible-lint
-      - run: ansible-lint --version
-      - run: ansible-lint .
+        with:
+          python-version: "3.6"
+
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint-action@master
+        with:
+          targets: |
+            Ops-repository/*.yml
+
 # jobs:
 
 #   run-playbooks:
@@ -64,7 +69,7 @@ jobs:
 #         #                         repeatable.
 #         #   -c C                  Specify configuration file to use. Defaults to ".ansible-lint"
 #         args: "" 
-        working-directory: ./Ops-repository
+#         working-directory: ./Ops-repository
 
 
 
