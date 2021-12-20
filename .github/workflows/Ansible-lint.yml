@@ -70,7 +70,6 @@ jobs:
 #         #                         repeatable.
 #         #   -c C                  Specify configuration file to use. Defaults to ".ansible-lint"
 #         args: "" 
-#         working-directory: ./Ops-repository
 
 
 
