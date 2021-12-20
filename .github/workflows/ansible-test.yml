@@ -20,6 +20,8 @@ jobs:
         with:
           targets: |
             iac-github/*.yml
+            iac-github/*/*.yml
+            playbooks/*.yml
 
 # jobs:
 
