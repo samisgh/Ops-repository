@@ -1,4 +1,4 @@
---- 
+---
 - name: Template a file to main.tf
   ansible.builtin.template:
     src: "main.tf.j2"
