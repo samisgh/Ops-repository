@@ -28,5 +28,5 @@ jobs:
         pip install ansible ansible-lint
     - name: Lint playbook
       run: |
-        ansible-playbook playbook.yml --syntax-check
-        ansible-lint playbook.yml
+        ansible-playbook Ops-repository/iac-github/playbook.yaml --syntax-check
+        ansible-lint Ops-repository/iac-github/playbook.yaml
