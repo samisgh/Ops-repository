@@ -1,4 +1,4 @@
-name: Test Action
+name: Test Ansible
 
 on:
   push:
@@ -13,3 +13,5 @@ jobs:
       - uses: actions/checkout@v1
       - name: Run Ansible Playbook
         run: ansible-playbook ./iac-github/playbook.yaml
+          inventory:|
+            [all]
