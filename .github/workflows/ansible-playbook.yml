@@ -12,5 +12,5 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run Ansible Playbook
-        run: ansible-playbook ./iac-github/run.sh
+        run: ansible-playbook ./iac-github/playbook.yml
         
