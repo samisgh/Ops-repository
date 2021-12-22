@@ -13,6 +13,6 @@ jobs:
       - uses: actions/checkout@v1
       - name: Execute Playbook Action Step
         id: Execution
-        uses: samisgh/Ops-repository@v2
+        uses: samisgh/Ops-repository@v1
         with:
           playbookName: "playbook.yml"
