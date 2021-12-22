@@ -11,8 +11,5 @@ jobs:
     name: Execute  Playbook
     steps:
       - uses: actions/checkout@v1
-      - name: Execute Playbook Action Step
-        id: Execution
-        uses: samisgh/Ops-repository@master
-        with:
-          playbookName: "playbook.yml"
+      - name: Run Ansible Playbook
+        run: ansible-playbook playbook.yaml
