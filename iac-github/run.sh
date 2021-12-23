@@ -1,2 +1,2 @@
 #! /usr/bin/env bash
-ansible-playbook -i localhost, -c local playbook.yaml
+ansible-playbook -i host.ini, -c local playbook.yaml
