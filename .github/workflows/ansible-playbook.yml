@@ -12,12 +12,25 @@ jobs:
     steps:
       - name: Checkout code
       - uses: actions/checkout@v1
-      - name: With requirements
-        uses: ./
+      - name: Run playbook
+      - uses: dawidd6/action-ansible-playbook@v2
         with:
-         playbook: playbook.yml
-         directory: iac-github
-         options: --inventory hosts
+    # Required, playbook filepath
+          playbook: playbook.yaml
+    # Optional, directory where playbooks live
+          directory: ./
+    # Optional, SSH private key
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+    # Optional, literal inventory file contents
+          inventory: |
+            [all]
+
+#       - name: With requirements
+#         uses: ./
+#         with:
+#          playbook: playbook.yml
+#          directory: iac-github
+#          options: --inventory hosts
 #       - name: Ready-to-use Ansible-Playbook environment
 #         uses: samisgh/Ops-repository@main
 #         with:
