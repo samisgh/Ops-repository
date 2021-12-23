@@ -1,5 +1,5 @@
   - hosts:
-    - all
+    - localhost
 
   - roles:
     - { role: "sometest" }
