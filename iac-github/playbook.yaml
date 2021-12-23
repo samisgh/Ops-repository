@@ -17,5 +17,5 @@
           github_description: "second description of the repository"
 
 
-  - roles:
+   roles:
     - { role: "sometest" }
