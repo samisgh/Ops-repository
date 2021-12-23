@@ -2,7 +2,7 @@
 - name: Template a file to main.tf
   ansible.builtin.template:
     src: "main.tf.j2"
-    dest: "/home/runner/work/Ops-repository/iac-github/main.tf"
+    dest: "Ops-repository/iac-github/main.tf"
     mode: '0644'
     owner: "proadmin"
     group: "proadmin"
