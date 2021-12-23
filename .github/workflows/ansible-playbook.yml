@@ -11,13 +11,20 @@ jobs:
     name: Execute  Playbook
     steps:
       - uses: actions/checkout@v1
-      - name: Create target directory
+      - name: Ready-to-use Ansible-Playbook environment
+        uses: samisgh/Ops-repository@main
         with:
-          path: ~/iac-github
-      - name: Open Ops repository Directory
-        working-directory: ./iac-github
-        run: |
-          ls -la
-      - name: Run Ansible Playbook
-        run: ansible-playbook ./iac-github/playbook.yaml
+          playbook_file: iac-github/playbook.yml
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: "false"
+          ANSIBLE_DEPRECATION_WARNINGS: "false"
+#       - name: Create target directory
+#         with:
+#           path: ~/iac-github
+#       - name: Open Ops repository Directory
+#         working-directory: ./iac-github
+#         run: |
+#           ls -la
+#       - name: Run Ansible Playbook
+#         run: ansible-playbook ./iac-github/playbook.yaml
         
