@@ -12,11 +12,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-      - name: Play Ansible Playbook
-        uses: arillso/action.playbook@master
-        with:
-          playbook: ./iac.github/playbook.yml
-          inventory: ./iac.github/run.sh
+#       - name: Play Ansible Playbook
+#         uses: arillso/action.playbook@master
+#         with:
+#           playbook: ./iac.github/playbook.yml
+#           inventory: ./iac.github/run.sh
 
 #       - name: With requirements
 #         uses: ./
@@ -34,10 +34,10 @@ jobs:
 #       - name: Create target directory
 #         with:
 #           path: ~/iac-github
-#       - name: Open Ops repository Directory
-#         working-directory: ./iac-github
-#         run: |
-#           ls -la
-#       - name: Run Ansible Playbook
-#         run: ansible-playbook ./iac-github/playbook.yaml
+      - name: Open Ops repository Directory
+        working-directory: ./iac-github
+        run: |
+          ls -la
+      - name: Run Ansible Playbook
+        run: ansible-playbook ./iac-github/playbook.yaml
         
