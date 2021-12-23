@@ -15,8 +15,8 @@ jobs:
       - name: Play Ansible Playbook
         uses: arillso/action.playbook@master
         with:
-          playbook: iac.github/playbook.yml
-          inventory: iac.github/run.sh
+          playbook: ./iac.github/playbook.yml
+          inventory: ./iac.github/run.sh
 
 #       - name: With requirements
 #         uses: ./
