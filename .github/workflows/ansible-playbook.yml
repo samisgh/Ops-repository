@@ -8,12 +8,12 @@ on:
 jobs:
   ansible_playbook_job:
     runs-on: ubuntu-latest
-
-#     name: Create target directory
-#       - path: ./Ops-repository/iac-github state=directory mode=0755 
     name: Execute  Playbook
     steps:
       - uses: actions/checkout@v1
+      - name: Create target directory
+        with:
+          path: ~/iac-github
       - name: Open Ops repository Directory
         working-directory: ./iac-github
         run: |
