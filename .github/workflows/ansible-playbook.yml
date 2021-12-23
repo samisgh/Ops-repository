@@ -23,7 +23,7 @@ jobs:
           key: ${{secrets.SSH_PRIVATE_KEY}}
     # Optional, literal inventory file contents
           inventory: |
-            [all]
+            [localhost]
 
 #       - name: With requirements
 #         uses: ./
