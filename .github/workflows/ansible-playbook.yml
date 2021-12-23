@@ -16,7 +16,7 @@ jobs:
         uses: dawidd6/action-ansible-playbook@v2
         with:
     # Required, playbook filepath
-          playbook: ~/iac-github/playbook.yaml
+          playbook: iac-github/playbook.yaml
     # Optional, directory where playbooks live
           directory: ./
     # Optional, literal inventory file contents
