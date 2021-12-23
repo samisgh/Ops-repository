@@ -11,9 +11,9 @@ jobs:
     name: Execute  Playbook
     steps:
       - name: Checkout code
-      - uses: actions/checkout@v1
+        uses: actions/checkout@v1
       - name: Run playbook
-      - uses: dawidd6/action-ansible-playbook@v2
+        uses: dawidd6/action-ansible-playbook@v2
         with:
     # Required, playbook filepath
           playbook: playbook.yaml
