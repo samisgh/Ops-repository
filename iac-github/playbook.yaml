@@ -1,5 +1,4 @@
-  - hosts:
-    - kensu
+  - hosts: kensu
 
   - roles:
     - { role: "sometest" }
