@@ -16,6 +16,7 @@ jobs:
         uses: arillso/action.playbook@master
         with:
           playbook: iac.github/playbook.yml
+          inventory: iac.github/run.sh
 
 #       - name: With requirements
 #         uses: ./
