@@ -10,14 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     name: Execute  Playbook
     steps:
+      - name: Checkout code
       - uses: actions/checkout@v1
-      - name: Ready-to-use Ansible-Playbook environment
-        uses: samisgh/Ops-repository@main
+      - name: With requirements
+        uses: ./
         with:
-          playbook_file: iac-github/playbook.yml
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: "false"
-          ANSIBLE_DEPRECATION_WARNINGS: "false"
+         playbook: playbook.yml
+         directory: iac-github
+         options: --inventory hosts
+#       - name: Ready-to-use Ansible-Playbook environment
+#         uses: samisgh/Ops-repository@main
+#         with:
+#           playbook_file: iac-github/playbook.yml
+#         env:
+#           ANSIBLE_HOST_KEY_CHECKING: "false"
+#           ANSIBLE_DEPRECATION_WARNINGS: "false"
 #       - name: Create target directory
 #         with:
 #           path: ~/iac-github
