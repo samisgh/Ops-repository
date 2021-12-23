@@ -12,16 +12,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-      - name: Run playbook
-        uses: dawidd6/action-ansible-playbook@v2
+      - name: Play Ansible Playbook
+        uses: arillso/action.playbook@master
         with:
-    # Required, playbook filepath
-          playbook: iac-github/playbook.yaml
-    # Optional, directory where playbooks live
-          directory: ./
-    # Optional, literal inventory file contents
-          inventory: |
-            [localhost]
+          playbook: iac.github/playbook.yml
 
 #       - name: With requirements
 #         uses: ./
