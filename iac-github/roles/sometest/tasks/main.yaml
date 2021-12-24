@@ -1,8 +1,14 @@
 ---
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: "testdir"
+    state: directory
+    mode: '0755'
+
 - name: Template a file to main.tf
   ansible.builtin.template:
     src: "main.tf.j2"
-    dest: "iac-github/main.tf"
+    dest: "testdir"
     mode: '0644'
     owner: "proadmin"
     group: "proadmin"
