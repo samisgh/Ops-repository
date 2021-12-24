@@ -1,7 +1,7 @@
 - name: Template a file to resources.tf
   ansible.builtin.template:
     src: "resources.tf.j2"
-    dest: "/mnt/c/Users/admin/iac/iac-github/resources_{{ outer_item['github_repository_name'] }}.tf"
+    dest: "/tmp/generated_tf/resources_{{ outer_item['github_repository_name'] }}.tf"
     mode: '0644'
     owner: "proadmin"
     group: "proadmin"
