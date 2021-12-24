@@ -16,7 +16,6 @@
         github_name: "second_OPs_repository"
         github_description: "second description of the repository"
 
-    
 
   roles:
-    - { role: "sometest" }       
+    - { role: "sometest" } 
