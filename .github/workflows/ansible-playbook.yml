@@ -1,14 +1,11 @@
 name: Test Ansible
 
-defaults:
-  run:
-    working-directory: ./iac-github
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
 jobs:
   ansible_playbook_job:
     runs-on: ubuntu-latest
@@ -44,4 +41,5 @@ jobs:
           ls -la
       - name: Run Ansible Playbook
         run: ansible-playbook ./iac-github/playbook.yaml
+        working-directory: ./iac-github
         
