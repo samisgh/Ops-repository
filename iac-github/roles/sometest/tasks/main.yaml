@@ -1,14 +1,14 @@
 ---
 - name: Create a directory if it does not exist
   ansible.builtin.file:
-    path: "/tmp/generated_tf"
+    path: "tmp/generated_tf"
     state: directory
     mode: '0755'
 
 - name: Template a file to main.tf
   ansible.builtin.template:
     src: "main.tf.j2"
-    dest: "/tmp/generated_tf/main.tf"
+    dest: "tmp/generated_tf/main.tf"
     mode: '0644'
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_gid }}"
