@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ main ]
     
-# defaults:
-#   run:
-#     working-directory: iac-github
 
 jobs:
   ansible_playbook_job:
@@ -17,28 +14,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-#       - name: Play Ansible Playbook
-#         uses: arillso/action.playbook@master
-#         with:
-#           playbook: ./iac.github/playbook.yml
-#           inventory: ./iac.github/run.sh
-
-#       - name: With requirements
-#         uses: ./
-#         with:
-#          playbook: playbook.yml
-#          directory: iac-github
-#          options: --inventory hosts
-#       - name: Ready-to-use Ansible-Playbook environment
-#         uses: samisgh/Ops-repository@main
-#         with:
-#           playbook_file: iac-github/playbook.yml
-#         env:
-#           ANSIBLE_HOST_KEY_CHECKING: "false"
-#           ANSIBLE_DEPRECATION_WARNINGS: "false"
-#       - name: Create target directory
-#         with:
-#           path: ~/iac-github
       - name: Open Ops repository Directory
         working-directory: ./iac-github
         run: |
@@ -46,4 +21,13 @@ jobs:
       - name: Run Ansible Playbook
         working-directory: ./iac-github
         run: ansible-playbook playbook.yaml
+      - name: 'Terraform Format'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: 0.12.18
+          tf_actions_subcommand: 'init'
+          tf_actions_working_dir: '/tmp/generated_tf'
+          tf_actions_comment: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
