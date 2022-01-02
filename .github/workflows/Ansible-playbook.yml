@@ -21,7 +21,7 @@ jobs:
       - name: Run Ansible Playbook
         working-directory: ./iac-github
         run: ansible-playbook playbook.yaml
-      - name: 'Terraform Format'
+      - name: 'Terraform'
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: 0.12.18
