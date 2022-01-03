@@ -29,10 +29,12 @@ jobs:
 #         working-directory: /tmp/generated_tf
         uses: hashicorp/setup-terraform@v1
         with:
-          tf_actions_version: 0.12.18
-          tf_actions_subcommand: 'init'
-          tf_actions_working_dir: '/tmp/generated_tf'
-          tf_actions_comment: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          terraform_wrapper: false
+#           tf_actions_version: 0.12.18
+#           tf_actions_subcommand: 'init'
+#           tf_actions_working_dir: '/tmp/generated_tf'
+#           tf_actions_comment: true
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
