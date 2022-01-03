@@ -24,14 +24,14 @@ jobs:
         working-directory: ./iac-github
         run: ansible-playbook playbook.yaml
 
-      - name: List files in runner.temp
-        run: echo ${{ runner.temp }}
+#       - name: List files in runner.temp
+#         run: echo ${{ runner.temp }}
 
 #       - name: "move generated files to another address"
 #         run: mkdir -p /github/workspace/generate_tf && mv /tmp/generate_tf/* /github/workspace/generate_tf
 
       - name: "list files"
-        run: ls -ltrh /tmp/generate_tf
+        run: ls -ltrh /tmp
 
 
       - uses: hashicorp/setup-terraform@v1
