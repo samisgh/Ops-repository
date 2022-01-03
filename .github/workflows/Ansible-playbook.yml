@@ -42,9 +42,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
           
-      - name: plan terraform
+      - name: terraform plan
         working-directory: /tmp/generated_tf
         run: terraform plan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          
+      - name: terraform apply
+        working-directory: /tmp/generated_tf
+        run: terraform apply
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
