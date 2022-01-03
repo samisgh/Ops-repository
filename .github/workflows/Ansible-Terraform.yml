@@ -28,8 +28,8 @@ jobs:
       - name: "list files"
         run: ls -ltrh /tmp/generated_tf
 
-
-      - uses: hashicorp/setup-terraform@v1
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
       
       - name: Terraform Format
         id: fmt
