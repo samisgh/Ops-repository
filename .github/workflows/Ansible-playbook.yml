@@ -41,6 +41,12 @@ jobs:
         run: terraform init
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          
+      - name: plan terraform
+        working-directory: /tmp/generated_tf
+        run: terraform plan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
 #       - name: 'Terraform'
 #         uses: hashicorp/terraform-github-actions@master
