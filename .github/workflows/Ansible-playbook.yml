@@ -31,13 +31,13 @@ jobs:
 #         run: mkdir -p /github/workspace/generate_tf && mv /tmp/generate_tf/* /github/workspace/generate_tf
 
       - name: "list files"
-        run: ls -ltrh /tmp
+        run: ls -ltrh /tmp/generated_tf
 
 
       - uses: hashicorp/setup-terraform@v1
 
       - name: init terraform
-        working-directory: /tmp/generate_tf
+        working-directory: /tmp/generated_tf
         run: terraform init
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
