@@ -27,8 +27,11 @@ jobs:
       - name: List files in runner.temp
         run: echo ${{ runner.temp }}
 
-      - name: "cd To /tmp"
-        run: cd /tmp && ls -ltrh && pwd
+      - name: "move generated files to another address"
+        run: mkdir -p /github/workspace/generate_tf && mv /tmp/generate_tf/* /github/workspace/generate_tf
+
+      - name: "list files"
+        run: ls -ltrh /github/workspace/generate_tf
 
       - name: 'Terraform'
         uses: hashicorp/terraform-github-actions@master
