@@ -21,9 +21,9 @@ jobs:
       - name: Run Ansible Playbook
         working-directory: ./iac-github
         run: ansible-playbook playbook.yaml
-      - name: List files in runner.temp
-        working-directory: ${{ runner.temp }}
-        run: find ./ -type f
+#       - name: List files in runner.temp
+#         working-directory: ${{ runner.temp }}
+#         run: find ./ -type f
 
       - name: 'Terraform'
         uses: hashicorp/terraform-github-actions@master
