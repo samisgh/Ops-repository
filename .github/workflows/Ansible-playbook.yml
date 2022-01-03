@@ -42,7 +42,7 @@ jobs:
 
 
 
-      - name: init terraform
+      - name: init Terraform
         working-directory: /tmp/generated_tf
         run: terraform init
         env:
@@ -54,7 +54,7 @@ jobs:
 
 
           
-      - name: terraform plan
+      - name: Terraform plan
         working-directory: /tmp/generated_tf
         run: terraform plan
         env:
@@ -65,6 +65,8 @@ jobs:
         working-directory: /tmp/generated_tf
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
           
