@@ -14,10 +14,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
+
       - name: Open Ops repository Directory
         working-directory: ./iac-github
         run: |
           ls -la
+
       - name: Run Ansible Playbook
         working-directory: ./iac-github
         run: ansible-playbook playbook.yaml
@@ -26,7 +28,7 @@ jobs:
         run: echo ${{ runner.temp }}
 
       - name: "cd To /tmp"
-        run: cd ${{ runner.temp }} && ls -ltrh && pwd
+        run: cd /tmp && ls -ltrh && pwd
 
       - name: 'Terraform'
         uses: hashicorp/terraform-github-actions@master
