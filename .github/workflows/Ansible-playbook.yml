@@ -24,11 +24,6 @@ jobs:
         working-directory: ./iac-github
         run: ansible-playbook playbook.yaml
 
-#       - name: List files in runner.temp
-#         run: echo ${{ runner.temp }}
-
-#       - name: "move generated files to another address"
-#         run: mkdir -p /github/workspace/generate_tf && mv /tmp/generate_tf/* /github/workspace/generate_tf
 
       - name: "list files"
         run: ls -ltrh /tmp/generated_tf
@@ -67,21 +62,3 @@ jobs:
         run: terraform apply -auto-approve
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-          
-#       - name: terraform apply
-#         working-directory: /tmp/generated_tf
-#         run: terraform apply
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-
-#       - name: 'Terraform'
-#         uses: hashicorp/terraform-github-actions@master
-#         with:
-#           tf_actions_version: 0.12.18
-#           tf_actions_subcommand: 'init'
-#           tf_actions_working_dir: 'generate_tf'
-#           tf_actions_comment: true
-
-        
