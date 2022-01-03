@@ -48,11 +48,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           
-      - name: terraform apply
+          
+      - name: Terraform Apply
         working-directory: /tmp/generated_tf
-        run: terraform apply
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -auto-approve
+
+
+          
+#       - name: terraform apply
+#         working-directory: /tmp/generated_tf
+#         run: terraform apply
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
 #       - name: 'Terraform'
 #         uses: hashicorp/terraform-github-actions@master
