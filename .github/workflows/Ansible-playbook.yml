@@ -35,6 +35,12 @@ jobs:
 
 
       - uses: hashicorp/setup-terraform@v1
+      
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+
+
 
       - name: init terraform
         working-directory: /tmp/generated_tf
