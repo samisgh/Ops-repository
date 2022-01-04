@@ -63,7 +63,7 @@ jobs:
 #         if: github.event_name == 'pull_request'
         run: terraform plan -no-color
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+#           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           github_token: ${{ secrets.MY_GITHUB_TOKEN }}
 #         continue-on-error: true
         
