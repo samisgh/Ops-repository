@@ -64,6 +64,7 @@ jobs:
         run: terraform plan -no-color
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          github_token: ${{ secrets.MY_GITHUB_TOKEN }}
 #         continue-on-error: true
         
 #       - name: Update Pull Request
