@@ -51,7 +51,7 @@ jobs:
         working-directory: /tmp/generated_tf
         run: terraform init
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           
       - name: Terraform Validate
         id: validate
@@ -63,7 +63,7 @@ jobs:
 #         if: github.event_name == 'pull_request'
         run: terraform plan -no-color
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 #         continue-on-error: true
         
 #       - name: Update Pull Request
@@ -104,4 +104,4 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
