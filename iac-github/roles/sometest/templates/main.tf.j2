@@ -7,14 +7,7 @@ terraform {
   }
 }
 
-terraform {
-    backend "remote" {
-        organization = "kensuio"
-        workspaces {
-            name = "samisgh-ops-repository"
-        }
-    }
-}
+
 
 provider "github" {
   token = "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" 
