@@ -2,6 +2,7 @@
 - hosts: localhost
   connection: local
 
+
   vars:
     github_version: "~> 4.0"
     github_list:
