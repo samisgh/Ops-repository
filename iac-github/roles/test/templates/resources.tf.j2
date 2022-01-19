@@ -1,0 +1,99 @@
+data "github_team" "{{ outer_item['github_repository_name'] }}" {
+  for_each = {
+    custsvc-manager = "pull",
+    custsvc-qa      = "pull",
+    custsvc-soleng  = "pull",
+    eng-backend     = "push",
+    eng-developer   = "push",
+    eng-frontend    = "push",
+    eng-integration = "pull",
+    eng-manager     = "admin",
+    github-admins   = "admin",
+    infra-manager   = "admin"
+    infra-ops       = "push",
+  }
+  slug = each.key
+}
+
+resource "github_repository" "{{ outer_item['github_repository_name'] }}" {
+  name                   = "{{ outer_item['github_name'] }}"
+  description            = "{{ outer_item['github_description'] }}"
+  visibility             = "public"
+  has_issues             = false
+  has_projects           = false
+  has_wiki               = false
+  delete_branch_on_merge = true
+  auto_init              = true
+  vulnerability_alerts   = true
+
+lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "github_branch_default" "{{ outer_item['github_branch_default'] }}"{
+  repository = github_repository.{{ outer_item['github_repository_name'] }}.name
+  branch     = "main"
+}
+
+resource "github_team_repository" "{{ outer_item['github_repository_team_'] }}" {
+  for_each = {
+    custsvc-manager = "pull",
+    custsvc-qa      = "pull",
+    custsvc-soleng  = "pull",
+    eng-backend     = "push",
+    eng-developer   = "push",
+    eng-frontend    = "push",
+    eng-integration = "pull",
+    eng-manager     = "admin",
+    github-admins   = "admin",
+    infra-manager   = "admin"
+    infra-ops       = "push",
+  }
+
+  team_id    = data."{{ outer_item['github_repository_name'] }}"[each.key].id
+  repository = github_repository."{{ outer_item['github_repository_name'] }}".name
+  permission = each.value
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "github_branch_protection" "{{ outer_item['github_repository_name'] }}"  {
+  repository_id = github_repository.{{ outer_item['github_repository_name'] }}.node_id
+ for_each = {
+    main = {
+      pattern          = "main",
+      strict           = true,
+      contexts         = ["continuous-integration/jenkins/branch"],
+      allows_deletions = false
+    }
+ }
+
+
+  pattern                = "main"
+  enforce_admins         = true
+  allows_deletions       = each.value["allows_deletions"]
+  allows_force_pushes    = false
+  require_signed_commits = true
+
+  required_status_checks {
+    strict   = each.value["strict"]
+    contexts = each.value["contexts"]
+  }
+
+  required_pull_request_reviews {
+    dismiss_stale_reviews  = true
+  }
+
+  
+ lifecycle {
+    create_before_destroy = true
+  }
+}
+
+  depends_on = [
+    github_repository.{{ outer_item['github_repository_name'] }}
+  ]
+}

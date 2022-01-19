@@ -1,0 +1,35 @@
+terraform {
+  required_providers {
+    github = {
+      source  = "integrations/github"
+      version = "{{ github_version }}"
+    }
+  vault = {
+      source  = "hashicorp/vault"
+      version = "{{ vault_version }}"
+    }
+  }
+}
+
+terraform {
+    backend "remote" {
+        organization = "kensuio"
+        workspaces {
+            name = "samisgh-ops-repository"
+        }
+    }
+}
+
+
+provider "vault" {
+  address = "https://vault.464n.com"
+}
+
+data "vault_generic_secret" "github-token" {
+  path = "secret/devops/github-token"
+}
+
+provider "github" {
+  token = data.vault_generic_secret.github-token.data["token"]
+  owner = data.vault_generic_secret.github-token.data["organization"]
+}
