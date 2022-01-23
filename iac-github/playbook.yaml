@@ -11,6 +11,7 @@
         github_branch_protection: "test_repo_id"
         github_name: "test_repository"
         github_description: "A description of the repository"
+        github_repository_team_assigned: "test_team_assigned"
       # - github_repository_name: "second_OPs_repo" 
       #   github_branch_default: "main2"
       #   github_branch_protection: "second_OPs_repo_id"
