@@ -15,7 +15,7 @@ data "github_team" "{{ outer_item['github_repository_name'] }}" {
   slug = each.key
 }
 
-resource "github_repository" "{{ outer_item['github_repository_name'] }}" {
+resource "github_repository" "{{ outer_item['github_name'] }}" {
   name                   = "{{ outer_item['github_name'] }}"
   description            = "{{ outer_item['github_description'] }}"
   visibility             = "public"
@@ -36,7 +36,7 @@ resource "github_branch_default" "{{ outer_item['github_branch_default'] }}"{
   branch     = "main"
 }
 
-resource "github_team_repository" "{{ outer_item['github_repository_team_'] }}" {
+resource "github_team_repository" "{{ outer_item['github_repository_team_assigned'] }}" {
   for_each = {
     custsvc-manager = "pull",
     custsvc-qa      = "pull",
@@ -60,7 +60,7 @@ resource "github_team_repository" "{{ outer_item['github_repository_team_'] }}" 
   }
 }
 
-resource "github_branch_protection" "{{ outer_item['github_repository_name'] }}"  {
+resource "github_branch_protection" "{{ outer_item['github_branch_protection'] }}"  {
   repository_id = github_repository.{{ outer_item['github_repository_name'] }}.node_id
  for_each = {
     main = {
